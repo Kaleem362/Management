@@ -30,7 +30,7 @@ const HeroProduct = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-between p-10 bg-slate-50">
+    <div className="flex flex-col items-center justify-between p-10 bg-white">
       <h1 className="text-5xl font-extrabold tracking-tight text-center text-black font-Manrope pb-7">
         New Arrivals
       </h1>

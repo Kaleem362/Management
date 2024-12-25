@@ -24,7 +24,7 @@ const TopSellingPage = () => {
     );
   };
   return (
-    <div className="w-full h-[100vh] bg-slate-50 flex flex-col ">
+    <div className="w-full h-[100vh] bg-white flex flex-col ">
       <h1 className="text-5xl font-extrabold tracking-tighter text-center text-black font-Manrope pb-7">
         Top Selling
       </h1>
