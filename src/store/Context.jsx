@@ -10,11 +10,13 @@ import casual from "../assets/images/DressStyle-Casual.png";
 import formal from "../assets/images/DressStyle-Formal.jpg";
 import party from "../assets/images/DressStyle-Party.jpg";
 import gym from "../assets/images/DressStyle-Gym.jpg";
+import { Customers } from "../Components/testimonialData";
 
 export const Store = createContext();
 
 export const StoreProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
+  const [customers, setCustomers] = useState([]);
 
   const getProducts = async () => {
     try {
@@ -35,6 +37,10 @@ export const StoreProvider = ({ children }) => {
     console.log(products);
   }, [products]);
 
+  useEffect(() => {
+    setCustomers(Customers);
+  }, []);
+
   const contextValue = {
     brandlogos: {
       HeroImage,
@@ -52,6 +58,7 @@ export const StoreProvider = ({ children }) => {
       party,
       gym,
     },
+    customers,
   };
 
   return <Store.Provider value={contextValue}>{children}</Store.Provider>;
