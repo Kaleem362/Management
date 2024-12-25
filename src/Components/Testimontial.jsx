@@ -23,11 +23,11 @@ const Testimontial = () => {
       {/* height: 300px; width: 300px; display: flex ; flex-direction: column;
       gap: 10px; font-family: 'Manrope'; padding: 10px; margin: 0px 10px; */}
 
-      <div className="flex w-full p-4 overflow-x-scroll bg-yellow whitespace-nowrap">
+      <div className="flex w-full p-4 overflow-x-scroll bg-yellow">
         {customers.map((customer, index) => (
           <div
             key={index}
-            className="customer-card max-w-[400px] h-[400px] whitespace-pre-wrap flex flex-col gap-2 font-Manrope p-4 mx-4 bg-slate-100 rounded-lg border border-black"
+            className="customer-card w-[400px]  h-[400px] whitespace-normal flex flex-col gap-2 font-Manrope p-4 mx-4 bg-slate-100 rounded-lg border border-black"
           >
             <span className="rating text-start font-Manrope">
               {`Rating: ${customer.rating}`}
