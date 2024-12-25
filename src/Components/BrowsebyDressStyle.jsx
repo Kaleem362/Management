@@ -5,8 +5,8 @@ const BrowsebyDressStyle = () => {
   const { dressImages } = useContext(Store);
   console.log("Dress Images:", dressImages);
   return (
-    <div className="flex items-center justify-center w-full bg-white px-auto ">
-      <div className="choose-category-container w-[1000px] rounded-lg shadow-cardShadow px-12 bg-slate-50">
+    <div className="flex items-center justify-center w-full pb-10 bg-white px-auto">
+      <div className="choose-category-container w-[1000px] rounded-lg shadow-cardShadow px-12 bg-slate-50 pb-12">
         <h1 className="p-4 text-3xl font-extrabold text-center text-black font-Manrope">
           Browse by Style
         </h1>

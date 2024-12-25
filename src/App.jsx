@@ -5,6 +5,7 @@ import Hero from "./Components/Hero";
 import HeroProduct from "./Components/HeroProduct";
 import TopSellingPage from "./Components/TopSellingPage";
 import BrowsebyDressStyle from "./Components/BrowsebyDressStyle";
+import Testimontial from "./Components/Testimontial";
 
 const App = () => {
   const [discount, setdiscount] = useState(true);
@@ -16,6 +17,7 @@ const App = () => {
       <HeroProduct />
       <TopSellingPage />
       <BrowsebyDressStyle />
+      <Testimontial />
     </div>
   );
 };
