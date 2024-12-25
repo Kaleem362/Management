@@ -1,44 +1,101 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
-import { Customers } from "./testimonialData";
 import { Store } from "../store/Context";
-
-const Testimontial = () => {
+import { AiFillStar, AiOutlineStar, AiOutlineVerified } from "react-icons/ai";
+import { MdVerified } from "react-icons/md";
+const Testimonial = () => {
   const { customers } = useContext(Store);
+  const scrollContainerRef = useRef(null);
 
-  // Populate customers from JSON data
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -350,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: 350,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const StarRating = ({ rating }) => {
+    const totalStars = 5;
+    const stars = [];
+
+    // Convert rating to number and ensure it's between 0 and 5
+    const normalizedRating = Math.min(Math.max(Number(rating) || 0, 0), 5);
+
+    for (let i = 1; i <= totalStars; i++) {
+      stars.push(
+        <span key={i}>
+          {i <= normalizedRating ? (
+            <AiFillStar className="text-xl text-yellow-400" />
+          ) : (
+            <AiOutlineStar className="text-xl text-yellow-400" />
+          )}
+        </span>
+      );
+    }
+
+    return <div className="flex">{stars}</div>;
+  };
 
   return (
-    <div className="testimonial-container">
-      {/* Header */}
-      <div className="flex items-center justify-between p-20 header-bar">
-        <h1 className="text-5xl font-bold uppercase font-Manrope">
+    <section className="px-4 py-10 testimonial-container">
+      {/* Header Section */}
+      <div className="flex items-center justify-between mx-auto mb-10 max-w-7xl">
+        <h1 className="text-3xl font-bold uppercase md:text-5xl font-Manrope">
           Our Happy Customers
         </h1>
-        <div className="flex gap-3 left-right-arrow">
-          <FaArrowCircleLeft size={24} />
-          <FaArrowCircleRight size={24} />
+        <div className="flex gap-4">
+          <button
+            onClick={scrollLeft}
+            className="transition-opacity hover:opacity-75"
+            aria-label="Scroll left"
+          >
+            <FaArrowCircleLeft size={28} />
+          </button>
+          <button
+            onClick={scrollRight}
+            className="transition-opacity hover:opacity-75"
+            aria-label="Scroll right"
+          >
+            <FaArrowCircleRight size={28} />
+          </button>
         </div>
       </div>
-      {/* height: 300px; width: 300px; display: flex ; flex-direction: column;
-      gap: 10px; font-family: 'Manrope'; padding: 10px; margin: 0px 10px; */}
 
-      <div className="flex w-full p-4 overflow-x-scroll bg-yellow">
+      <div
+        ref={scrollContainerRef}
+        className="flex gap-6 pb-4 overflow-x-auto scrollbar-hide scroll-smooth"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
         {customers.map((customer, index) => (
           <div
             key={index}
-            className="customer-card w-[400px]  h-[400px] whitespace-normal flex flex-col gap-2 font-Manrope p-4 mx-4 bg-slate-100 rounded-lg border border-black"
+            className="flex-shrink-0 w-[300px] h-[210px] my-2 bg-white rounded-lg shadow-lg p-4 border border-gray-200 transition-transform hover:scale-[1.02]"
           >
-            <span className="rating text-start font-Manrope">
-              {`Rating: ${customer.rating}`}
-            </span>
-            <h3 className="text-lg font-bold name">{customer.name}</h3>
-            <p className="break-words">{customer.desc}</p>
+            <div className="flex items-center gap-2 mb-4">
+              {/* <span className="font-medium"></span> */}
+              <StarRating rating={customer.rate} />
+            </div>
+            <h3 className="flex items-start justify-start gap-1 mb-3 text-lg font-bold font-Manrope">
+              {customer.name}
+              <MdVerified className="mt-1 text-green-500" />
+            </h3>
+            <p className="text-gray-600 line-clamp-4">{customer.desc}</p>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
-export default Testimontial;
+export default Testimonial;

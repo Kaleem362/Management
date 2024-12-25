@@ -23,7 +23,7 @@ export const StoreProvider = ({ children }) => {
       const response = await fetch("https://fakestoreapi.com/products/");
       const data = await response.json();
       setProducts(data);
-      console.table(data);
+      // console.table(data);
     } catch (error) {
       console.error(error);
     }
@@ -34,7 +34,7 @@ export const StoreProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    console.log(products);
+    // console.log(products);
   }, [products]);
 
   useEffect(() => {

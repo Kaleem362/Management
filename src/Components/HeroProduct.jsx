@@ -7,7 +7,7 @@ const HeroProduct = () => {
   const { products } = useContext(Store);
 
   useEffect(() => {
-    console.log(products); // Ensure the products are being logged correctly
+    // console.log(products); // Ensure the products are being logged correctly
   }, [products]);
 
   const renderStars = (rate) => {
