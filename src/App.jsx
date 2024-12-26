@@ -9,6 +9,7 @@ import Testimontial from "./Components/Testimontial";
 import { Route, Routes } from "react-router";
 import WholeProducts from "./Components/WholeProducts";
 import BlackLabel from "./Components/BlackLabel";
+import Footer from "./Components/Footer";
 
 const App = () => {
   const [discount, setdiscount] = useState(false);
@@ -27,6 +28,7 @@ const App = () => {
               <BrowsebyDressStyle />
               <Testimontial />
               <BlackLabel />
+              <Footer />
             </>
           }
         />

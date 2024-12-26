@@ -7,7 +7,7 @@ import { Link } from "react-router";
 
 const Navbar = () => {
   return (
-    <div className="flex items-center w-full px-4 py-3 bg-white ">
+    <div className="flex items-center w-full h-20 px-4 py-3 bg-white ">
       <Link to={"/"}>
         <h1 className="h-full mr-3 text-3xl font-bold text-black font-Lilita">
           SHOP.CO
