@@ -2,10 +2,12 @@ import React from "react";
 
 const Loader = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full gap-4">
-      <div className="flex items-center justify-center w-20 h-20 text-4xl text-blue-400 border-4 border-transparent rounded-full animate-spin border-t-blue-400">
-        <div className="flex items-center justify-center w-16 h-16 text-2xl text-red-400 border-4 border-transparent rounded-full animate-spin border-t-red-400"></div>
-      </div>
+    <div class="text-center p-20">
+      <div class="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-yellow-500 mx-auto mb-8"></div>
+      {/* <h2 class="text-zinc-900 dark:text-white mt-4">Loading...</h2> */}
+      <p class="font-Manrope text-black text-3xl">
+        Your items are on their way
+      </p>
     </div>
   );
 };
