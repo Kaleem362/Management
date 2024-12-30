@@ -48,9 +48,9 @@ const Testimonial = () => {
   };
 
   return (
-    <section className="px-4 py-10 testimonial-container">
+    <section className="px-6 py-10 testimonial-container">
       {/* Header Section */}
-      <div className="flex items-center justify-between mx-auto mb-10 max-w-7xl">
+      <div className="flex items-center justify-between px-8 mx-auto mb-10 max-w-7xl">
         <h1 className="text-3xl font-bold uppercase md:text-5xl font-Manrope">
           Our Happy Customers
         </h1>

@@ -14,7 +14,7 @@ import visaIcon from "../assets/FooterIcons/visaIcon.png";
 
 const Footer = () => {
   return (
-    <div className="flex flex-col items-center justify-around w-full min-h-64 bg-slate-200">
+    <div className="flex flex-col items-center justify-around w-full pt-10 min-h-64 bg-slate-200">
       <div className="flex items-center justify-around w-full p-10 first-section-footer">
         <div className="flex flex-col w-64 h-full gap-8 ">
           <Link to={"/"}>
@@ -28,16 +28,28 @@ const Footer = () => {
           </p>
           <div className="flex items-center justify-start gap-4 social-icons">
             <a href="https://www.twitter.com">
-              <AiFillTwitterCircle size={32} />
+              <AiFillTwitterCircle
+                size={30}
+                className="rounded-full hover:text-white hover:bg-black"
+              />
             </a>
             <a href="https://www.instagram.com">
-              <AiFillInstagram size={32} />
+              <AiFillInstagram
+                size={30}
+                className="rounded-full hover:text-white hover:bg-black"
+              />
             </a>
             <a href="https://www.facebook.com">
-              <AiFillFacebook size={32} />
+              <AiFillFacebook
+                size={30}
+                className="rounded-full hover:text-white hover:bg-black"
+              />
             </a>
             <a href="https://www.github.com/kaleem362">
-              <AiFillGithub size={32} />
+              <AiFillGithub
+                size={30}
+                className="rounded-full hover:text-white hover:bg-black"
+              />
             </a>
           </div>
         </div>
