@@ -74,7 +74,7 @@ const ProductDetails = () => {
                 className="flex items-center w-auto px-6 py-2 mx-2 border rounded-full bg-slate-200"
                 onClick={() => {
                   // Toggle state
-                  if (addFavourite === false) {
+                  if (addFavourite === true) {
                     addFav(product);
                   } else {
                     remFav(product);

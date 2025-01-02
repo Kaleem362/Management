@@ -17,16 +17,16 @@ export const Store = createContext();
 export const StoreProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [customers, setCustomers] = useState([]);
-  const [cart, setCart] = useState([]); // this is Cart State
-  const [FavItems, setFavItems] = useState([]);
+  const [cart, setCart] = useState([]); // Cart state
+  const [FavItems, setFavItems] = useState([]); // Favorite items state
   const [addFavourite, setAddFavourite] = useState(false);
+  const [totalCartPrice, setTotalCartPrice] = useState(null);
 
   const getProducts = async () => {
     try {
       const response = await fetch("https://fakestoreapi.com/products/");
       const data = await response.json();
       setProducts(data);
-      // console.table(data);
     } catch (error) {
       console.error(error);
     }
@@ -36,75 +36,72 @@ export const StoreProvider = ({ children }) => {
     getProducts();
   }, []);
 
-  // got products fetched using API
   useEffect(() => {
-    // console.log(products);
-  }, [products]);
-
-  // set Customers testimonial data
-  useEffect(() => {
-    setCustomers(Customers);
+    setCustomers(Customers); // Set customer data
   }, []);
 
-  // Add to Cart Function
+  // Add to Cart function
   const addToCart = (product) => {
     setCart((prevCart) => {
       const existingItem = prevCart.find((item) => item.id === product.id);
       if (existingItem) {
-        // If the product already exists in the cart, increase its quantity
         return prevCart.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       }
-      // Otherwise, add it to the cart with a quantity of 1
       return [...prevCart, { ...product, quantity: 1 }];
     });
   };
 
-  //add items to favourite
+  // Add to Favourite function
   const addFav = (product) => {
     setFavItems((prevFavitems) => {
-      setAddFavourite(true); // This can stay here
-      return [...prevFavitems, product]; // Explicitly return the new array
+      // Check if product already exists in favourites
+      const existingItem = prevFavitems.find((item) => item.id === product.id);
+      if (!existingItem) {
+        setAddFavourite(true);
+        return [...prevFavitems, product];
+      }
+      return prevFavitems; // Do nothing if product is already in favs
     });
   };
 
-  // remove favourites items from favourite cart
+  // Remove from Cart function
+  const remfromCart = (product) => {
+    setCart((prevCart) => {
+      return prevCart.filter((item) => item.id !== product.id);
+    });
+  };
+
+  // Remove from Favourites function
   const remFav = (product) => {
     alert("Item removed successfully!!");
     setFavItems((prevFavItems) => {
+      // Remove the product from the favourite items list
       return prevFavItems.filter((item) => item.id !== product.id);
     });
-    setAddFavourite(false);
+    setAddFavourite(false); // Reset the addFavourite state after removal
   };
 
+  useEffect(() => {
+    const totalPrice = cart.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
+    setTotalCartPrice(totalPrice.toFixed(2)); // Set total price as a string with 2 decimal places
+  }, [cart]);
+
   const contextValue = {
-    brandlogos: {
-      HeroImage,
-      HeroImageTwo,
-      Gucci,
-      CalvinKlein,
-      versace,
-      Prada,
-      Zara,
-    },
     products,
-    dressImages: {
-      casual,
-      formal,
-      party,
-      WomensClothing,
-    },
-    customers,
     cart,
     addToCart,
+    remfromCart,
     addFav,
     FavItems,
-    addFavourite,
-    setAddFavourite,
     remFav,
+    totalCartPrice,
   };
 
   return <Store.Provider value={contextValue}>{children}</Store.Provider>;
