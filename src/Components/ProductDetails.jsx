@@ -13,6 +13,7 @@ const ProductDetails = () => {
   const { id } = useParams(); // Get product ID from URL
   const { products } = useContext(Store);
   const [addFavourite, setAddFavourite] = useState(false);
+  const { addToCart } = useContext(Store);
 
   // Find the selected product
   const product = products.find((p) => p.id === parseInt(id));
@@ -64,7 +65,10 @@ const ProductDetails = () => {
               Price: ${product.price}
             </p>
             <div className="flex items-center justify-start w-full button">
-              <button className="px-6 py-2 text-white border rounded-full w-42 text-md hover:bg-white hover:text-slate-500 hover:border-slate-500 hover:border bg-slate-600 font-Manrope">
+              <button
+                className="px-6 py-2 text-white border rounded-full w-42 text-md hover:bg-white hover:text-slate-500 hover:border-slate-500 hover:border bg-slate-600 font-Manrope"
+                onClick={() => addToCart(product)}
+              >
                 Add to Cart
               </button>
               <button className="flex items-center w-auto px-6 py-2 mx-2 border rounded-full bg-slate-200">
@@ -97,7 +101,7 @@ const ProductDetails = () => {
       {/* Sidebar Section */}
       <div className="ProductDetailsSidebar bg-white ml-4 w-[30%]">
         <div className="p-4 header-categories">
-          <h4 className="mb-2 text-2xl font-bold  text-start font-Manrope">
+          <h4 className="mb-2 text-2xl font-bold text-start font-Manrope">
             Suggested More Products
           </h4>
           {products.slice(0, 10).map((product) => (

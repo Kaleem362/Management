@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Store } from "../store/Context";
+import { Link } from "react-router";
 
 const Hero = () => {
   // Access `brandlogos` from context
@@ -17,11 +18,11 @@ const Hero = () => {
             designed to bring out your individuality and cater to your sense of
             style
           </p>
-          <a href="#">
+          <Link to="/WholeProducts">
             <button className="w-48 py-3 my-3 text-white transition-all bg-black border border-black rounded-full hover:outline-none hover:border hover:border-white duration-400 font-Manrope hover:bg-white hover:text-black hover:shadow-buttonShadow">
               Shop Now
             </button>
-          </a>
+          </Link>
           <div className="flex justify-center flex-grow gap-4 px-4 py-3">
             <div className="flex-col flex-1 border-r-[1px] border-slate-400 h-16 ">
               <h3 className="text-3xl font-bold font-Manrope">200+</h3>

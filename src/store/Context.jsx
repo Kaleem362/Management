@@ -45,7 +45,19 @@ export const StoreProvider = ({ children }) => {
 
   // Add to Cart Function
   const addToCart = (product) => {
-    setCart((prevCart) => [...prevCart, product]);
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((item) => item.id === product.id);
+      if (existingItem) {
+        // If the product already exists in the cart, increase its quantity
+        return prevCart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+      // Otherwise, add it to the cart with a quantity of 1
+      return [...prevCart, { ...product, quantity: 1 }];
+    });
   };
 
   const contextValue = {
@@ -66,6 +78,8 @@ export const StoreProvider = ({ children }) => {
       WomensClothing,
     },
     customers,
+    cart,
+    addToCart,
   };
 
   return <Store.Provider value={contextValue}>{children}</Store.Provider>;

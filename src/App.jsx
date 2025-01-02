@@ -40,6 +40,7 @@ const App = () => {
             <>
               <Navbar />
               <WholeProducts />
+              <Footer />
             </>
           }
         />
@@ -49,6 +50,7 @@ const App = () => {
             <>
               <Navbar />
               <ProductDetails />
+              <Footer />
             </>
           }
         />
