@@ -77,12 +77,12 @@ export const StoreProvider = ({ children }) => {
 
   // Remove from Favourites function
   const remFav = (product) => {
-    alert("Item removed successfully!!");
     setFavItems((prevFavItems) => {
       // Remove the product from the favourite items list
       return prevFavItems.filter((item) => item.id !== product.id);
     });
     setAddFavourite(false); // Reset the addFavourite state after removal
+    // alert("Item removed successfully!!");
   };
 
   useEffect(() => {
@@ -94,12 +94,30 @@ export const StoreProvider = ({ children }) => {
   }, [cart]);
 
   const contextValue = {
+    brandlogos: {
+      HeroImage,
+      HeroImageTwo,
+      Gucci,
+      CalvinKlein,
+      versace,
+      Prada,
+      Zara,
+    },
     products,
+    dressImages: {
+      casual,
+      formal,
+      party,
+      WomensClothing,
+    },
+    customers,
     cart,
     addToCart,
     remfromCart,
     addFav,
     FavItems,
+    addFavourite,
+    setAddFavourite,
     remFav,
     totalCartPrice,
   };

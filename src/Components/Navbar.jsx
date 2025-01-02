@@ -1,9 +1,16 @@
 import React from "react";
+import {
+  AiFillAlert,
+  AiFillAmazonCircle,
+  AiFillCiCircle,
+  AiFillInfoCircle,
+} from "react-icons/ai";
 import { FaSearch } from "react-icons/fa";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { FiShoppingCart } from "react-icons/fi";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link } from "react-router";
+import Cart from "./Cart";
 
 const Navbar = () => {
   return (
@@ -53,8 +60,13 @@ const Navbar = () => {
       </div>
       <div className="flex flex-row-reverse justify-between gap-8 px-16 User-account-icons">
         <FaRegCircleUser className="cursor-pointer size-6" />
-        <Link to="/Cart">
-          <FiShoppingCart className="cursor-pointer size-6" />
+        <Link to="/Cart" className="relative">
+          <FiShoppingCart className="relative cursor-pointer size-6" />
+          {Cart.length > 0 ? (
+            <AiFillInfoCircle className="absolute text-red-600 rounded-full -right-2 -top-2" />
+          ) : (
+            ""
+          )}
         </Link>
       </div>
     </div>

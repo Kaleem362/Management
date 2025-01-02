@@ -68,7 +68,7 @@ const Cart = () => {
       </div>
 
       {/* Favourite Items Section */}
-      <div className="border rounded-lg favourites-items w-[30%]">
+      <div className="border rounded-lg favourites-items w-[30%] pb-2">
         <h1 className="px-4 py-2 text-2xl font-extrabold font-Manrope text-start">
           Favourite items
         </h1>
@@ -94,7 +94,7 @@ const Cart = () => {
             </ul>
           ))
         ) : (
-          <h2 className="text-xl text-center text-gray-500">
+          <h2 className="text-xl text-center text-gray-200">
             No favorite items added
           </h2>
         )}

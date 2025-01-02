@@ -11,7 +11,7 @@ import Loader from "./Loader";
 
 const ProductDetails = () => {
   const { id } = useParams(); // Get product ID from URL
-  const { addToCart, products, addFav, setAddFavourite, addFavourite, remFav } =
+  const { addToCart, products, addFav, addFavourite, remFav, setAddFavourite } =
     useContext(Store);
 
   // Find the selected product
@@ -74,7 +74,8 @@ const ProductDetails = () => {
                 className="flex items-center w-auto px-6 py-2 mx-2 border rounded-full bg-slate-200"
                 onClick={() => {
                   // Toggle state
-                  if (addFavourite === true) {
+                  if (addFavourite === false) {
+                    setAddFavourite(true);
                     addFav(product);
                   } else {
                     remFav(product);
