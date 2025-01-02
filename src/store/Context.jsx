@@ -18,6 +18,9 @@ export const StoreProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [customers, setCustomers] = useState([]);
   const [cart, setCart] = useState([]); // this is Cart State
+  const [FavItems, setFavItems] = useState([]);
+  const [addFavourite, setAddFavourite] = useState(false);
+
   const getProducts = async () => {
     try {
       const response = await fetch("https://fakestoreapi.com/products/");
@@ -60,6 +63,23 @@ export const StoreProvider = ({ children }) => {
     });
   };
 
+  //add items to favourite
+  const addFav = (product) => {
+    setFavItems((prevFavitems) => {
+      setAddFavourite(true); // This can stay here
+      return [...prevFavitems, product]; // Explicitly return the new array
+    });
+  };
+
+  // remove favourites items from favourite cart
+  const remFav = (product) => {
+    alert("Item removed successfully!!");
+    setFavItems((prevFavItems) => {
+      return prevFavItems.filter((item) => item.id !== product.id);
+    });
+    setAddFavourite(false);
+  };
+
   const contextValue = {
     brandlogos: {
       HeroImage,
@@ -80,6 +100,11 @@ export const StoreProvider = ({ children }) => {
     customers,
     cart,
     addToCart,
+    addFav,
+    FavItems,
+    addFavourite,
+    setAddFavourite,
+    remFav,
   };
 
   return <Store.Provider value={contextValue}>{children}</Store.Provider>;

@@ -11,9 +11,8 @@ import Loader from "./Loader";
 
 const ProductDetails = () => {
   const { id } = useParams(); // Get product ID from URL
-  const { products } = useContext(Store);
-  const [addFavourite, setAddFavourite] = useState(false);
-  const { addToCart } = useContext(Store);
+  const { addToCart, products, addFav, setAddFavourite, addFavourite, remFav } =
+    useContext(Store);
 
   // Find the selected product
   const product = products.find((p) => p.id === parseInt(id));
@@ -71,26 +70,21 @@ const ProductDetails = () => {
               >
                 Add to Cart
               </button>
-              <button className="flex items-center w-auto px-6 py-2 mx-2 border rounded-full bg-slate-200">
-                <p className="hidden group-hover:w-32 group-hover:flex group-hover:visible">
-                  Add to favourites
-                </p>
+              <button
+                className="flex items-center w-auto px-6 py-2 mx-2 border rounded-full bg-slate-200"
+                onClick={() => {
+                  // Toggle state
+                  if (addFavourite === false) {
+                    addFav(product);
+                  } else {
+                    remFav(product);
+                  }
+                }}
+              >
                 {addFavourite ? (
-                  <AiFillHeart
-                    className="text-red-500 group"
-                    size={24}
-                    onClick={() => {
-                      setAddFavourite(false);
-                    }}
-                  />
+                  <AiFillHeart className="text-red-500" size={24} />
                 ) : (
-                  <AiOutlineHeart
-                    className="text-red-500 group"
-                    size={24}
-                    onClick={() => {
-                      setAddFavourite(true);
-                    }}
-                  />
+                  <AiOutlineHeart className="text-red-500" size={24} />
                 )}
               </button>
             </div>
