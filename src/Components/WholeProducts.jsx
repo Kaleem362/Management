@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Store } from "../store/Context";
 import Loader from "./Loader";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { Link } from "react-router";
 
 const WholeProducts = () => {
   const { products } = useContext(Store);

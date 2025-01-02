@@ -53,7 +53,9 @@ const Navbar = () => {
       </div>
       <div className="flex flex-row-reverse justify-between gap-8 px-16 User-account-icons">
         <FaRegCircleUser className="cursor-pointer size-6" />
-        <FiShoppingCart className="cursor-pointer size-6" />
+        <Link to="/Cart">
+          <FiShoppingCart className="cursor-pointer size-6" />
+        </Link>
       </div>
     </div>
   );

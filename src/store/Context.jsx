@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 import HeroImage from "../assets/images/HeroFashionImage.png";
 import HeroImageTwo from "../assets/images/HeroFashionImagetwo.jpg";
 import Gucci from "../assets/brand-logos/Guccibrandlogo.png";
@@ -17,7 +17,7 @@ export const Store = createContext();
 export const StoreProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [customers, setCustomers] = useState([]);
-
+  const [cart, setCart] = useState([]); // this is Cart State
   const getProducts = async () => {
     try {
       const response = await fetch("https://fakestoreapi.com/products/");
@@ -33,13 +33,20 @@ export const StoreProvider = ({ children }) => {
     getProducts();
   }, []);
 
+  // got products fetched using API
   useEffect(() => {
     // console.log(products);
   }, [products]);
 
+  // set Customers testimonial data
   useEffect(() => {
     setCustomers(Customers);
   }, []);
+
+  // Add to Cart Function
+  const addToCart = (product) => {
+    setCart((prevCart) => [...prevCart, product]);
+  };
 
   const contextValue = {
     brandlogos: {

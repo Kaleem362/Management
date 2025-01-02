@@ -20,7 +20,7 @@ const HeroProduct = () => {
         {Array(fullStars)
           .fill(0)
           .map((_, index) => (
-            <AiFillStar key={`full-${index}`} className="text-yellow-400" />
+            <AiFillStar key={`full-${index}`} Name="text-yellow-400" />
           ))}
         {Array(emptyStars)
           .fill(0)

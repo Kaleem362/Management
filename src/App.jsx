@@ -10,6 +10,8 @@ import { Route, Routes } from "react-router";
 import WholeProducts from "./Components/WholeProducts";
 import BlackLabel from "./Components/BlackLabel";
 import Footer from "./Components/Footer";
+import ProductDetails from "./Components/ProductDetails";
+import Cart from "./Components/Cart";
 
 const App = () => {
   const [discount, setdiscount] = useState(false);
@@ -41,7 +43,24 @@ const App = () => {
             </>
           }
         />
-        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route
+          path="/product/:id"
+          element={
+            <>
+              <Navbar />
+              <ProductDetails />
+            </>
+          }
+        />
+        <Route
+          path="/Cart"
+          element={
+            <>
+              <Navbar />
+              <Cart />
+            </>
+          }
+        />
       </Routes>
     </div>
   );
