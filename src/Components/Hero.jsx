@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Store } from "../store/Context";
-import { Link } from "react-router-dom"; // Correct import for Link
+import { Link } from "react-router";
 
 const Hero = () => {
   // Access `brandlogos`, `filteredProducts`, and `searchQuery` from context
@@ -86,16 +86,38 @@ const Hero = () => {
           </div>
         </>
       ) : (
-        <div className="filtered-products">
+        <div
+          className="flex flex-wrap items-start justify-start w-full h-screen gap-4 p-10 overflow-scroll filtered-products bg-slate-50"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
           {filteredProducts.length > 0 ? (
-            filteredProducts.map((product, index) => (
-              <div key={index} className="product-item">
-                <h2>{product.title}</h2>
+            filteredProducts.map((product) => (
+              <Link
+                key={product.id}
+                to={`/product/${product.id}`}
+                className="flex flex-col items-center justify-between h-auto p-2 rounded-lg w-44 bg-slate-400 product-item text-start"
+              >
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="h-auto w-28"
+                />
+                <p className="flex justify-start w-full m-2 text-sm font-bold text-white text-start font-manrope">
+                  {product.title}
+                </p>
+                <div className="flex items-center justify-start w-full">
+                  <p className="text-[12px] text-start">{product.category}</p>
+                </div>
+                <div className="flex items-center justify-end w-full p-2 font-bold font-Manrope price">
+                  <p>${product.price}</p>
+                </div>
                 {/* Render other product details here */}
-              </div>
+              </Link>
             ))
           ) : (
-            <p>No products found for your search.</p>
+            <p className="items-center text-5xl font-extrabold text-center text-slate-200">
+              Searching....
+            </p>
           )}
         </div>
       )}

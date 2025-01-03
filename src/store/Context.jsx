@@ -108,7 +108,7 @@ export const StoreProvider = ({ children }) => {
   };
 
   const filteredProducts = products.filter((product) => {
-    product.title.toLowerCase().includes(searchQuery);
+    return product.title.toLowerCase().includes(searchQuery);
   });
   const contextValue = {
     brandlogos: {
