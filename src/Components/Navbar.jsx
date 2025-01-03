@@ -1,18 +1,14 @@
-import React from "react";
-import {
-  AiFillAlert,
-  AiFillAmazonCircle,
-  AiFillCiCircle,
-  AiFillInfoCircle,
-} from "react-icons/ai";
+import React, { useContext } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { FiShoppingCart } from "react-icons/fi";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link } from "react-router";
-import Cart from "./Cart";
+import { Store } from "../store/Context";
 
 const Navbar = () => {
+  const { cart, searchQuery, handleSearchQuery } = useContext(Store);
+  const cartlength = cart.length;
   return (
     <div className="flex items-center w-full h-20 px-4 py-3 bg-white ">
       <Link to={"/"}>
@@ -56,16 +52,21 @@ const Navbar = () => {
           type="text"
           className="w-full py-3 pl-12 pr-4 border border-gray-400 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-500"
           placeholder="Search Products"
+          onChange={handleSearchQuery}
+          value={searchQuery}
         />
       </div>
       <div className="flex flex-row-reverse justify-between gap-8 px-16 User-account-icons">
         <FaRegCircleUser className="cursor-pointer size-6" />
         <Link to="/Cart" className="relative">
           <FiShoppingCart className="relative cursor-pointer size-6" />
-          {Cart.length > 0 ? (
-            <AiFillInfoCircle className="absolute text-red-600 rounded-full -right-2 -top-2" />
-          ) : (
-            ""
+          {cartlength > 0 && (
+            <span
+              className="absolute flex items-center justify-center w-5 h-5 text-sm font-bold text-white bg-red-600 rounded-full -right-3 -top-2"
+              aria-label={`Cart contains ${cartlength} items`}
+            >
+              {cartlength}
+            </span>
           )}
         </Link>
       </div>

@@ -15,12 +15,22 @@ import { Customers } from "../Components/testimonialData";
 export const Store = createContext();
 
 export const StoreProvider = ({ children }) => {
+  //main state for the product where all the API fetched products will be place, [array]
   const [products, setProducts] = useState([]);
+  // testimonial people, customers array
   const [customers, setCustomers] = useState([]);
+  // state for the cart items, users are adding and deleting items into it....
   const [cart, setCart] = useState([]); // Cart state
-  const [FavItems, setFavItems] = useState([]); // Favorite items state
+  // state for the favourite items, user can keep his favourite items in this array list
+  const [FavItems, setFavItems] = useState([]);
+  // state for the conditional placement of filled and outlined red color heart for favouriting and unfavouriting an item.
   const [addFavourite, setAddFavourite] = useState(false);
+  // above the cart. this shows the total price of the items added to the cart, the user can see he/she have to pay this  much amount, shown on the top of cart list.
   const [totalCartPrice, setTotalCartPrice] = useState(null);
+  // This is for cart length and it helps in the indicator badge on the cart icon, if there is items in the cart, badge will be shown otherwise no badge.
+  const [cartLength, setCartLength] = useState(0);
+  // state for storing the search query
+  const [searchQuery, setSearchQuery] = useState("");
 
   const getProducts = async () => {
     try {
@@ -93,6 +103,13 @@ export const StoreProvider = ({ children }) => {
     setTotalCartPrice(totalPrice.toFixed(2)); // Set total price as a string with 2 decimal places
   }, [cart]);
 
+  const handleSearchQuery = (e) => {
+    setSearchQuery(e.target.value.toLowerCase());
+  };
+
+  const filteredProducts = products.filter((product) => {
+    product.title.toLowerCase().includes(searchQuery);
+  });
   const contextValue = {
     brandlogos: {
       HeroImage,
@@ -120,6 +137,11 @@ export const StoreProvider = ({ children }) => {
     setAddFavourite,
     remFav,
     totalCartPrice,
+    cartLength,
+    setCartLength,
+    searchQuery,
+    handleSearchQuery,
+    filteredProducts,
   };
 
   return <Store.Provider value={contextValue}>{children}</Store.Provider>;

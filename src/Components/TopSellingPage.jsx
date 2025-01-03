@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import { Store } from "../store/Context";
 import Loader from "./Loader";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { useNavigate } from "react-router";
 
 const TopSellingPage = () => {
   const { products } = useContext(Store);
+  const navigate = useNavigate();
   const renderStars = (rate) => {
     const fullStars = Math.floor(rate); // Full stars
     const emptyStars = 5 - fullStars; // Remaining stars
