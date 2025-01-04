@@ -53,9 +53,9 @@ const ProductDetails = () => {
           />
           <div>
             <p className="mb-4 text-justify w-96">{product.description}</p>
-            <p className="text-sm text-gray-600">
-              Category: {product.category}
-            </p>
+            <span className="p-2 py-1 text-sm text-white rounded-full bg-slate-600">
+              {product.category}
+            </span>
             <p className="flex items-center my-4 text-yellow-400">
               Rating: {renderStars(product.rating.rate)} ({product.rating.count}{" "}
               reviews)

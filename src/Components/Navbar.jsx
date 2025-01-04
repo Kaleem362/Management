@@ -12,31 +12,35 @@ const Navbar = () => {
   return (
     <div className="flex items-center w-full h-20 px-4 py-3 bg-white ">
       <Link to={"/"}>
-        <h1 className="h-full mr-3 text-3xl font-bold text-black font-Lilita">
+        <h1 className="h-full mr-3 text-3xl font-extrabold text-black font-manrope">
           SHOP.CO
         </h1>
       </Link>
       <ul className="flex justify-around mx-4 w-[450px] gap-5 ml-10 align-middle">
         <li className="relative flex items-center justify-center h-20 gap-1 font-bold align-middle cursor-pointer font-Manrope group">
           Shop
-          <IoIosArrowDown className="transition-all group-hover:rotate-180" />
+          <IoIosArrowDown className="transition-all rotate-180 group-hover:rotate-0" />
           <ul className="absolute flex-col w-[240px] hidden p-4 overflow-hidden transition-all group-hover:flex left-6 group-hover:bg-black top-16 group-hover:min-h-fit">
-            <Link>
+            <Link to="/mensClothing">
               <li className="p-2 text-lg text-center text-white min-w-fit font-Manrope hover:text-black hover:bg-white">
                 Men's Clothing
               </li>
             </Link>
-            <Link>
+            <Link to="/WomensClothing">
               <li className="w-full p-2 text-lg text-center text-white font-Manrope hover:text-black hover:bg-white">
                 Women's Clothing
               </li>
             </Link>
-            <li className="w-full p-2 text-lg text-center text-white hover:text-black hover:bg-white font-Manrope">
-              Jewellery
-            </li>
-            <li className="w-full p-2 text-lg text-center text-white hover:text-black hover:bg-white font-Manrope">
-              Electronics
-            </li>
+            <Link to="/JewelleryProducts">
+              <li className="w-full p-2 text-lg text-center text-white hover:text-black hover:bg-white font-Manrope">
+                Jewellery
+              </li>
+            </Link>
+            <Link to="/ElectronicsProducts">
+              <li className="w-full p-2 text-lg text-center text-white hover:text-black hover:bg-white font-Manrope">
+                Electronics
+              </li>
+            </Link>
           </ul>
         </li>
 

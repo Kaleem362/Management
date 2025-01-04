@@ -1,11 +1,29 @@
 import React, { useContext } from "react";
 import { Store } from "../store/Context";
 import { Link } from "react-router";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const Hero = () => {
   // Access `brandlogos`, `filteredProducts`, and `searchQuery` from context
   const { brandlogos, filteredProducts, searchQuery } = useContext(Store);
-
+  const renderStars = (rate) => {
+    const fullStars = Math.floor(rate); // Full stars
+    const emptyStars = 5 - fullStars; // Remaining stars
+    return (
+      <>
+        {Array(fullStars)
+          .fill(0)
+          .map((_, index) => (
+            <AiFillStar key={`full-${index}`} className="text-yellow-400" />
+          ))}
+        {Array(emptyStars)
+          .fill(0)
+          .map((_, index) => (
+            <AiOutlineStar key={`empty-${index}`} className="text-gray-300" />
+          ))}
+      </>
+    );
+  };
   return (
     <>
       {searchQuery === "" ? (
@@ -105,6 +123,12 @@ const Hero = () => {
                 <p className="flex justify-start w-full m-2 text-sm font-bold text-white text-start font-manrope">
                   {product.title}
                 </p>
+                <div className="flex items-center px-2 my-1 text-yellow-400">
+                  {renderStars(product.rating.rate)}
+                  <span className="ml-2 text-[10px] font-Manrope text-gray-500">
+                    {product.rating.count} Reviews
+                  </span>
+                </div>
                 <div className="flex items-center justify-start w-full">
                   <p className="text-[10px] text-start bg-slate-800 text-white p-1 px-2 rounded-full">
                     {product.category}

@@ -103,6 +103,9 @@ export const StoreProvider = ({ children }) => {
     setTotalCartPrice(totalPrice.toFixed(2)); // Set total price as a string with 2 decimal places
   }, [cart]);
 
+  const handleSearchQuery = (e) => {
+    setSearchQuery(e.target.value);
+  };
   const filteredProducts = products.filter((product) => {
     const title = product.title.toLowerCase();
     const query = searchQuery.toLowerCase();
@@ -111,7 +114,12 @@ export const StoreProvider = ({ children }) => {
     const queryWords = query.split(" ");
 
     // Check if any query word is a substring of the title
-    return queryWords.some((word) => title.includes(word));
+    return (
+      title.includes(query.slice(0, -1)) ||
+      title.includes(query) ||
+      title.includes(query + "s") ||
+      queryWords.some((word) => title.includes(word))
+    );
   });
 
   const contextValue = {

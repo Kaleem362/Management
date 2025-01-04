@@ -12,6 +12,10 @@ import BlackLabel from "./Components/BlackLabel";
 import Footer from "./Components/Footer";
 import ProductDetails from "./Components/ProductDetails";
 import Cart from "./Components/Cart";
+import MensClothing from "./Components/MensClothing";
+import WomensClothing from "./Components/WomensClothing";
+import ElectronicsProducts from "./Components/ElectronicProducts";
+import JewelleryProducts from "./Components/JewelleryProducts";
 
 const App = () => {
   const [discount, setdiscount] = useState(false);
@@ -60,6 +64,50 @@ const App = () => {
             <>
               <Navbar />
               <Cart />
+            </>
+          }
+        />
+        <Route
+          path="/mensClothing"
+          element={
+            <>
+              <Navbar />
+              <MensClothing />
+              <TopSellingPage />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/WomensClothing"
+          element={
+            <>
+              <Navbar />
+              <WomensClothing />
+              <TopSellingPage />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/ElectronicsProducts"
+          element={
+            <>
+              <Navbar />
+              <ElectronicsProducts />
+              <TopSellingPage />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/JewelleryProducts"
+          element={
+            <>
+              <Navbar />
+              <JewelleryProducts />
+              <TopSellingPage />
+              <Footer />
             </>
           }
         />
