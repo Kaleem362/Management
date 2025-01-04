@@ -3,10 +3,12 @@ import "./index.css";
 import App from "./App.jsx";
 import { StoreProvider } from "./store/Context.jsx";
 import { BrowserRouter } from "react-router";
+import ScrollToTop from "./Components/ScrollToTop.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <StoreProvider>
+      <ScrollToTop />
       <App />
     </StoreProvider>
   </BrowserRouter>

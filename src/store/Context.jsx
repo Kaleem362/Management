@@ -9,7 +9,7 @@ import Zara from "../assets/brand-logos/Zarabrandlogo.png";
 import casual from "../assets/images/DressStyle-Casual.jpg";
 import formal from "../assets/images/DressStyle-Formal.jpg";
 import party from "../assets/images/DressStyle-Party.jpg";
-import WomensClothing from "../assets/images/WomensClothing.jpg";
+import WomensClothing from "../assets/images/WomensClothing.png";
 import { Customers } from "../Components/testimonialData";
 
 export const Store = createContext();

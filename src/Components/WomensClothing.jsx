@@ -45,7 +45,7 @@ const WomensClothing = () => {
                 <img
                   src={product.image}
                   alt={product.title}
-                  className="object-contain w-full h-auto"
+                  className="object-contain w-full h-auto rounded"
                 />
                 <h3 className="p-1 text-sm font-bold text-white font-manrope">
                   {product.title}

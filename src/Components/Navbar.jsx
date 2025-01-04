@@ -36,7 +36,7 @@ const Navbar = () => {
                 Jewellery
               </li>
             </Link>
-            <Link to="/ElectronicsProducts">
+            <Link to="/ElectronicProducts">
               <li className="w-full p-2 text-lg text-center text-white hover:text-black hover:bg-white font-Manrope">
                 Electronics
               </li>

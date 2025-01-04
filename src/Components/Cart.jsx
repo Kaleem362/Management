@@ -15,7 +15,7 @@ const Cart = () => {
           Explore Items to buy .....{" "}
           <Link
             to={"/WholeProducts"}
-            className="transition-all duration-100 ease-in-out text-blue-950 hover:font-bold"
+            className="text-2xl font-extrabold underline transition-all duration-100 ease-in-out text-blue-950"
           >
             See Products
           </Link>
@@ -81,12 +81,12 @@ const Cart = () => {
               className="flex items-center justify-start w-full gap-6 px-2 py-2 font-Manrope bg-slate-300"
             >
               <img src={item.image} alt={item.title} className="w-10 h-10" />
-              <li>
+              <li className="w-full px-2">
                 {item.title.length > 20 ? item.title.slice(0, 20) : item.title}{" "}
                 ${item.price.toFixed(2)}
               </li>
               <span
-                className="p-1 transition-all duration-200 bg-white rounded-full hover:bg-black"
+                className="relative p-1 transition-all duration-200 bg-white rounded-full hover:bg-black"
                 onClick={() => remFav(item)} // Pass the correct item to remFav function
               >
                 <AiFillDelete className="text-red-600" />

@@ -90,7 +90,7 @@ const App = () => {
           }
         />
         <Route
-          path="/ElectronicsProducts"
+          path="/ElectronicProducts"
           element={
             <>
               <Navbar />
