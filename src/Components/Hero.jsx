@@ -87,7 +87,7 @@ const Hero = () => {
         </>
       ) : (
         <div
-          className="flex flex-wrap items-start justify-start w-full h-screen gap-4 p-10 overflow-scroll filtered-products bg-slate-50"
+          className="flex flex-wrap items-start justify-start w-full h-screen gap-4 p-10 px-24 overflow-scroll filtered-products bg-slate-50"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {filteredProducts.length > 0 ? (
@@ -106,12 +106,13 @@ const Hero = () => {
                   {product.title}
                 </p>
                 <div className="flex items-center justify-start w-full">
-                  <p className="text-[12px] text-start">{product.category}</p>
+                  <p className="text-[10px] text-start bg-slate-800 text-white p-1 px-2 rounded-full">
+                    {product.category}
+                  </p>
                 </div>
                 <div className="flex items-center justify-end w-full p-2 font-bold font-Manrope price">
                   <p>${product.price}</p>
                 </div>
-                {/* Render other product details here */}
               </Link>
             ))
           ) : (

@@ -21,12 +21,16 @@ const Navbar = () => {
           Shop
           <IoIosArrowDown className="transition-all group-hover:rotate-180" />
           <ul className="absolute flex-col w-[240px] hidden p-4 overflow-hidden transition-all group-hover:flex left-6 group-hover:bg-black top-16 group-hover:min-h-fit">
-            <li className="p-2 text-lg text-center text-white min-w-fit font-Manrope hover:text-black hover:bg-white">
-              Men's Clothing
-            </li>
-            <li className="w-full p-2 text-lg text-center text-white font-Manrope hover:text-black hover:bg-white">
-              Women's Clothing
-            </li>
+            <Link>
+              <li className="p-2 text-lg text-center text-white min-w-fit font-Manrope hover:text-black hover:bg-white">
+                Men's Clothing
+              </li>
+            </Link>
+            <Link>
+              <li className="w-full p-2 text-lg text-center text-white font-Manrope hover:text-black hover:bg-white">
+                Women's Clothing
+              </li>
+            </Link>
             <li className="w-full p-2 text-lg text-center text-white hover:text-black hover:bg-white font-Manrope">
               Jewellery
             </li>

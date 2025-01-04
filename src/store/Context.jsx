@@ -103,13 +103,17 @@ export const StoreProvider = ({ children }) => {
     setTotalCartPrice(totalPrice.toFixed(2)); // Set total price as a string with 2 decimal places
   }, [cart]);
 
-  const handleSearchQuery = (e) => {
-    setSearchQuery(e.target.value.toLowerCase());
-  };
-
   const filteredProducts = products.filter((product) => {
-    return product.title.toLowerCase().includes(searchQuery);
+    const title = product.title.toLowerCase();
+    const query = searchQuery.toLowerCase();
+
+    // Split the query into words for multi-word matching
+    const queryWords = query.split(" ");
+
+    // Check if any query word is a substring of the title
+    return queryWords.some((word) => title.includes(word));
   });
+
   const contextValue = {
     brandlogos: {
       HeroImage,
