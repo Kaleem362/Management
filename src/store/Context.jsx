@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useContext } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import HeroImage from "../assets/images/HeroFashionImage.png";
 import HeroImageTwo from "../assets/images/HeroFashionImagetwo.jpg";
 import Gucci from "../brand-logos/Guccibrandlogo.png";
