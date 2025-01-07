@@ -93,7 +93,7 @@ const Hero = () => {
             </div>
             <div className="flex items-center justify-center flex-1 h-28">
               <img
-                src={brandlogos.CalvinKlein}
+                src={brandlogos.calvinKlein}
                 alt="Calvin Klein"
                 className="h-full w-54"
               />

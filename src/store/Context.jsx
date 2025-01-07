@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 import HeroImage from "../assets/images/HeroFashionImage.png";
 import HeroImageTwo from "../assets/images/HeroFashionImagetwo.jpg";
 import Gucci from "../assets/brand-logos/Guccibrandlogo.png";
-import CalvinKlein from "../assets/brand-logos/CalvinKleinbrandlogo.png";
+import calvinKlein from "../assets/brand-logos/calvinkleinbrandlogo.png";
 import versace from "../assets/brand-logos/versaceLogo.png";
 import Prada from "../assets/brand-logos/Pradabrandlogo.png";
 import Zara from "../assets/brand-logos/Zarabrandlogo.png";
@@ -127,7 +127,7 @@ export const StoreProvider = ({ children }) => {
       HeroImage,
       HeroImageTwo,
       Gucci,
-      CalvinKlein,
+      calvinKlein,
       versace,
       Prada,
       Zara,
