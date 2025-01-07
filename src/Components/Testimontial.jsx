@@ -82,14 +82,14 @@ const Testimonial = () => {
             key={index}
             className="flex-shrink-0 w-[300px] h-[210px] my-2 bg-white rounded-lg shadow-lg p-4 border border-gray-200 transition-transform hover:scale-[1.02]"
           >
-            <div className="flex items-center gap-2 mb-4">
-              {/* <span className="font-medium"></span> */}
-              <StarRating rating={customer.rate} />
-            </div>
             <h3 className="flex items-start justify-start gap-1 mb-3 text-lg font-bold font-Manrope">
               {customer.name}
               <MdVerified className="mt-1 text-green-500" />
             </h3>
+            <div className="flex items-center gap-2 mb-4">
+              {/* <span className="font-medium"></span> */}
+              <StarRating rating={customer.rate} />
+            </div>
             <p className="text-gray-600 line-clamp-4">{customer.desc}</p>
           </div>
         ))}

@@ -27,10 +27,26 @@ const MensClothing = () => {
     );
   };
   if (!products || products.length === 0) {
-    return <div>No men's Products Found.... </div>;
+    return (
+      <div className="flex items-center justify-center w-full p-40 loader">
+        <div
+          class="loader border-t-4 rounded-full border-blue-900 bg-gray-300 animate-spin mx-auto 
+aspect-square w-10 flex justify-center items-center text-yellow-700"
+        ></div>
+      </div>
+    );
   }
   return (
-    <div className="flex flex-col items-start justify-start w-full h-screen gap-10 p-10 mb-4 bg-slate-50">
+    <div className="flex flex-col items-start justify-start w-full h-screen gap-5 p-10 mb-4 bg-slate-50">
+      <div className="text-xl text-black pagination font-Manrope">
+        <Link to={"/"} className="hover:text-blue-900">
+          Home
+        </Link>{" "}
+        &gt;{" "}
+        <Link to={"/mensClothing"} className="hover:text-blue-900">
+          Mens Clothing
+        </Link>
+      </div>
       <div className="w-full">
         <h1 className="text-4xl font-extrabold text-black font-manrope text-start">
           Men's Clothing
@@ -41,15 +57,15 @@ const MensClothing = () => {
           return (
             <Link to={`/product/${product.id}`}>
               <div
-                className="w-56 h-auto p-4 rounded-lg items-cart bg-slate-700"
+                className="w-48 h-auto p-4 rounded-lg min-h-96 items-cart bg-slate-700"
                 key={product.id}
               >
                 <img
                   src={product.image}
                   alt={product.title}
-                  className="object-contain h-auto rounded w-62"
+                  className="object-contain w-auto mx-auto rounded h-44"
                 />
-                <h3 className="p-1 text-sm font-bold text-white font-manrope">
+                <h3 className="p-1 text-sm font-bold text-white break-words font-manrope">
                   {product.title}
                 </h3>
                 <p>{product.desc}</p>
