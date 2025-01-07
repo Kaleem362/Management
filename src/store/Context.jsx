@@ -11,6 +11,8 @@ import party from "../assets/images/DressStyle-Party.jpg";
 import WomensClothing from "../assets/images/WomensClothing.png";
 import { Customers } from "../Components/testimonialData";
 import Ck from "../brand-logos/calvinkleinbrandlogo.png";
+import { auth } from "../Firebase/FirebaseConfig";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export const Store = createContext();
 
@@ -31,7 +33,9 @@ export const StoreProvider = ({ children }) => {
   const [cartLength, setCartLength] = useState(0);
   // state for storing the search query
   const [searchQuery, setSearchQuery] = useState("");
-
+  // Email and password states
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const getProducts = async () => {
     try {
       const response = await fetch("https://fakestoreapi.com/products/");
@@ -121,6 +125,32 @@ export const StoreProvider = ({ children }) => {
       queryWords.some((word) => title.includes(word))
     );
   });
+  // authentication functions started here...........
+  // create account function
+
+  const createacc = async (email, password) => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log("Created user account successfully:", userCredential.user);
+      alert("button clicked");
+    } catch (error) {
+      console.error("Error creating account:", error.code, error.message);
+      // Optional: Provide user-friendly error messages
+      if (error.code === "auth/email-already-in-use") {
+        console.error(
+          "The email address is already in use by another account."
+        );
+      } else if (error.code === "auth/weak-password") {
+        console.error("The password is too weak.");
+      } else {
+        console.error("An unexpected error occurred.");
+      }
+    }
+  };
 
   const contextValue = {
     brandlogos: {
@@ -154,6 +184,11 @@ export const StoreProvider = ({ children }) => {
     searchQuery,
     handleSearchQuery,
     filteredProducts,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    createacc,
   };
 
   return <Store.Provider value={contextValue}>{children}</Store.Provider>;

@@ -16,6 +16,7 @@ import MensClothing from "./Components/MensClothing";
 import WomensClothing from "./Components/WomensClothing";
 import ElectronicsProducts from "./Components/ElectronicProducts";
 import JewelleryProducts from "./Components/JewelleryProducts";
+import CreateAccount from "./authentication/CreateAccount";
 
 const App = () => {
   const [discount, setdiscount] = useState(false);
@@ -111,6 +112,7 @@ const App = () => {
             </>
           }
         />
+        <Route path="/createAccount" element={<CreateAccount />} />
       </Routes>
     </div>
   );
