@@ -2,7 +2,6 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 import HeroImage from "../assets/images/HeroFashionImage.png";
 import HeroImageTwo from "../assets/images/HeroFashionImagetwo.jpg";
 import Gucci from "../assets/brand-logos/Guccibrandlogo.png";
-import calvinKlein from "../assets/brand-logos/calvinkleinbrandlogo.png";
 import versace from "../assets/brand-logos/versaceLogo.png";
 import Prada from "../assets/brand-logos/Pradabrandlogo.png";
 import Zara from "../assets/brand-logos/Zarabrandlogo.png";
@@ -11,6 +10,7 @@ import formal from "../assets/images/DressStyle-Formal.jpg";
 import party from "../assets/images/DressStyle-Party.jpg";
 import WomensClothing from "../assets/images/WomensClothing.png";
 import { Customers } from "../Components/testimonialData";
+import Ck from "../assets/brand-logos/calvinkleinbrandlogo.png";
 
 export const Store = createContext();
 
@@ -127,10 +127,10 @@ export const StoreProvider = ({ children }) => {
       HeroImage,
       HeroImageTwo,
       Gucci,
-      calvinKlein,
       versace,
       Prada,
       Zara,
+      Ck,
     },
     products,
     dressImages: {
