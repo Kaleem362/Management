@@ -1,16 +1,16 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import HeroImage from "../assets/images/HeroFashionImage.png";
 import HeroImageTwo from "../assets/images/HeroFashionImagetwo.jpg";
-import Gucci from "../assets/brand-logos/Guccibrandlogo.png";
-import versace from "../assets/brand-logos/versaceLogo.png";
-import Prada from "../assets/brand-logos/Pradabrandlogo.png";
-import Zara from "../assets/brand-logos/Zarabrandlogo.png";
+import Gucci from "../brand-logos/Guccibrandlogo.png";
+import versace from "../brand-logos/versaceLogo.png";
+import Prada from "../brand-logos/Pradabrandlogo.png";
+import Zara from "../brand-logos/Zarabrandlogo.png";
 import casual from "../assets/images/DressStyle-Casual.jpg";
 import formal from "../assets/images/DressStyle-Formal.jpg";
 import party from "../assets/images/DressStyle-Party.jpg";
 import WomensClothing from "../assets/images/WomensClothing.png";
 import { Customers } from "../Components/testimonialData";
-import Ck from "../assets/brand-logos/calvinkleinbrandlogo.png";
+import Ck from "../brand-logos/calvinkleinbrandlogo.png";
 
 export const Store = createContext();
 
