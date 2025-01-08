@@ -30,8 +30,7 @@ const MensClothing = () => {
     return (
       <div className="flex items-center justify-center w-full p-40 loader">
         <div
-          class="loader border-t-4 rounded-full border-blue-900 bg-gray-300 animate-spin mx-auto 
-aspect-square w-10 flex justify-center items-center text-yellow-700"
+          className="flex items-center justify-center w-10 mx-auto text-yellow-700 bg-gray-300 border-t-4 border-blue-900 rounded-full loader animate-spin aspect-square"
         ></div>
       </div>
     );

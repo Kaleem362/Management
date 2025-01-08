@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Store } from "../store/Context";
 import Loader from "./Loader";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai"; // Import star icons
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 const HeroProduct = () => {
   const Navigate = useNavigate();
@@ -64,12 +64,11 @@ const HeroProduct = () => {
               </span>
               <p className="p-2 pl-4  font-Poppins text-[18px]">
                 ${product.price}{" "}
-                {/* <span className="line-through mark text-slate-400">$</span> */}
               </p>
             </div>
           ))
         ) : (
-          <Loader /> // Show loading if no products are available
+          <Loader />
         )}
       </div>
       <button

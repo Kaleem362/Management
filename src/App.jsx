@@ -17,9 +17,12 @@ import WomensClothing from "./Components/WomensClothing";
 import ElectronicsProducts from "./Components/ElectronicProducts";
 import JewelleryProducts from "./Components/JewelleryProducts";
 import CreateAccount from "./authentication/CreateAccount";
+import { ProtectedRoute, PublicRoute } from "./authentication/ProtectedRoute";
+import LoginAccount from "./authentication/LoginAccount";
 
 const App = () => {
-  const [discount, setdiscount] = useState(false);
+  const [discount, setDiscount] = useState(false);
+
   return (
     <div>
       {discount ? <DiscountLabel /> : ""}
@@ -28,14 +31,16 @@ const App = () => {
           path="/"
           element={
             <>
-              <Navbar />
-              <Hero />
-              <HeroProduct />
-              <TopSellingPage />
-              <BrowsebyDressStyle />
-              <Testimontial />
-              <BlackLabel />
-              <Footer />
+              <ProtectedRoute>
+                <Navbar />
+                <Hero />
+                <HeroProduct />
+                <TopSellingPage />
+                <BrowsebyDressStyle />
+                <Testimontial />
+                <BlackLabel />
+                <Footer />
+              </ProtectedRoute>
             </>
           }
         />
@@ -43,9 +48,11 @@ const App = () => {
           path="/WholeProducts"
           element={
             <>
-              <Navbar />
-              <WholeProducts />
-              <Footer />
+              <ProtectedRoute>
+                <Navbar />
+                <WholeProducts />
+                <Footer />
+              </ProtectedRoute>
             </>
           }
         />
@@ -53,9 +60,11 @@ const App = () => {
           path="/product/:id"
           element={
             <>
-              <Navbar />
-              <ProductDetails />
-              <Footer />
+              <ProtectedRoute>
+                <Navbar />
+                <ProductDetails />
+                <Footer />
+              </ProtectedRoute>
             </>
           }
         />
@@ -63,8 +72,10 @@ const App = () => {
           path="/Cart"
           element={
             <>
-              <Navbar />
-              <Cart />
+              <ProtectedRoute>
+                <Navbar />
+                <Cart />
+              </ProtectedRoute>
             </>
           }
         />
@@ -72,10 +83,12 @@ const App = () => {
           path="/mensClothing"
           element={
             <>
-              <Navbar />
-              <MensClothing />
-              <TopSellingPage />
-              <Footer />
+              <ProtectedRoute>
+                <Navbar />
+                <MensClothing />
+                <TopSellingPage />
+                <Footer />
+              </ProtectedRoute>
             </>
           }
         />
@@ -83,10 +96,12 @@ const App = () => {
           path="/WomensClothing"
           element={
             <>
-              <Navbar />
-              <WomensClothing />
-              <TopSellingPage />
-              <Footer />
+              <ProtectedRoute>
+                <Navbar />
+                <WomensClothing />
+                <TopSellingPage />
+                <Footer />
+              </ProtectedRoute>
             </>
           }
         />
@@ -94,10 +109,12 @@ const App = () => {
           path="/ElectronicProducts"
           element={
             <>
-              <Navbar />
-              <ElectronicsProducts />
-              <TopSellingPage />
-              <Footer />
+              <ProtectedRoute>
+                <Navbar />
+                <ElectronicsProducts />
+                <TopSellingPage />
+                <Footer />
+              </ProtectedRoute>
             </>
           }
         />
@@ -105,14 +122,31 @@ const App = () => {
           path="/JewelleryProducts"
           element={
             <>
-              <Navbar />
-              <JewelleryProducts />
-              <TopSellingPage />
-              <Footer />
+              <ProtectedRoute>
+                <Navbar />
+                <JewelleryProducts />
+                <TopSellingPage />
+                <Footer />
+              </ProtectedRoute>
             </>
           }
         />
-        <Route path="/createAccount" element={<CreateAccount />} />
+        <Route
+          path="/createAccount"
+          element={
+            <PublicRoute>
+              <CreateAccount />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/loginaccount"
+          element={
+            <PublicRoute>
+              <LoginAccount />
+            </PublicRoute>
+          }
+        />
       </Routes>
     </div>
   );

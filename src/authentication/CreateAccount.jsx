@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import { Store } from "../store/Context";
+// import {toast} from React;
 
 const CreateAccount = () => {
-  const { email, setEmail, password, setPassword, createacc } =
+  const { email, setEmail, password, setPassword, createacc, name, setName } =
     useContext(Store);
   return (
     <div className="items-center justify-center w-full h-screen bg-transparent backdrop-filter-blur">
+      {/* {toast.success("success")} */}
       <section className="flex items-center justify-center w-full h-full">
         <div class="flex bg-white items-center justify-center px-4 shadow-cardShadow rounded-lg py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-8 w-fit">
           <div class="xl:mx-auto xl:w-full shadow-md p-4 xl:max-w-sm 2xl:max-w-md">
@@ -21,6 +23,21 @@ const CreateAccount = () => {
             </p>
             <form class="mt-8">
               <div class="space-y-5">
+                <div>
+                  <label class="text-base font-medium text-gray-900">
+                    Full Name
+                  </label>
+                  <div class="mt-2">
+                    <input
+                      placeholder="Name"
+                      type="text"
+                      required
+                      class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </div>
+                </div>
                 <div>
                   <label class="text-base font-medium text-gray-900">
                     Email address

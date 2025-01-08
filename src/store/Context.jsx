@@ -11,8 +11,12 @@ import party from "../assets/images/DressStyle-Party.jpg";
 import WomensClothing from "../assets/images/WomensClothing.png";
 import { Customers } from "../Components/testimonialData";
 import Ck from "../brand-logos/calvinkleinbrandlogo.png";
-import { auth } from "../Firebase/FirebaseConfig";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, db } from "../Firebase/FirebaseConfig";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
+import { useNavigate } from "react-router";
 
 export const Store = createContext();
 
@@ -36,6 +40,8 @@ export const StoreProvider = ({ children }) => {
   // Email and password states
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const navigate = useNavigate();
   const getProducts = async () => {
     try {
       const response = await fetch("https://fakestoreapi.com/products/");
@@ -136,7 +142,15 @@ export const StoreProvider = ({ children }) => {
         password
       );
       console.log("Created user account successfully:", userCredential.user);
-      alert("button clicked");
+      //navigate to home
+      navigate("/");
+      //set the user in real time database
+      // Save user data in Realtime Database
+      const userRef = ref(db, `users/${userCredential.user.uid}`);
+      await set(userRef, {
+        email: userCredential.user.email,
+        uid: userCredential.user.uid,
+      });
     } catch (error) {
       console.error("Error creating account:", error.code, error.message);
       // Optional: Provide user-friendly error messages
@@ -150,6 +164,8 @@ export const StoreProvider = ({ children }) => {
         console.error("An unexpected error occurred.");
       }
     }
+    setEmail("");
+    setPassword("");
   };
 
   const contextValue = {
@@ -189,7 +205,33 @@ export const StoreProvider = ({ children }) => {
     password,
     setPassword,
     createacc,
+    name,
+    setName,
   };
 
   return <Store.Provider value={contextValue}>{children}</Store.Provider>;
+};
+
+const AuthContext = createContext();
+
+export const useAuth = () => useContext(AuthContext);
+
+export const AuthProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  return (
+    <AuthContext.Provider value={{ currentUser }}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
 };
