@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Store } from "../store/Context";
+import { Link } from "react-router";
 // import {toast} from React;
 
 const CreateAccount = () => {
@@ -17,9 +18,12 @@ const CreateAccount = () => {
             </h2>
             <p class="mt-2 text-center text-sm text-gray-600">
               Already have an account?{" "}
-              <span className="font-bold text-[16px] text-black font-manrope hover:underline hover:cursor-pointer">
+              <Link
+                to={"/login"}
+                className="font-bold text-[16px] text-black font-manrope hover:underline hover:cursor-pointer"
+              >
                 Login
-              </span>
+              </Link>
             </p>
             <form class="mt-8">
               <div class="space-y-5">

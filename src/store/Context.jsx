@@ -15,6 +15,7 @@ import { auth, db } from "../Firebase/FirebaseConfig";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 import { useNavigate } from "react-router";
 
@@ -37,11 +38,13 @@ export const StoreProvider = ({ children }) => {
   const [cartLength, setCartLength] = useState(0);
   // state for storing the search query
   const [searchQuery, setSearchQuery] = useState("");
-  // Email and password states
+  // Email and password states for create account state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const [name, setName] = useState("");
   const navigate = useNavigate();
+  const [profileView, setProfileView] = useState(false);
   const getProducts = async () => {
     try {
       const response = await fetch("https://fakestoreapi.com/products/");
@@ -147,7 +150,7 @@ export const StoreProvider = ({ children }) => {
       //set the user in real time database
       // Save user data in Realtime Database
       const userRef = ref(db, `users/${userCredential.user.uid}`);
-      await set(userRef, {
+      await setDoc(userRef, {
         email: userCredential.user.email,
         uid: userCredential.user.uid,
       });
@@ -168,6 +171,16 @@ export const StoreProvider = ({ children }) => {
     setPassword("");
   };
 
+  const Logout = async () => {
+    try {
+      await signOut(auth);
+      // Remove the alert as it might interrupt navigation
+      navigate("/login", { replace: true });
+    } catch (error) {
+      console.error("Logout error:", error);
+      alert(error.message);
+    }
+  };
   const contextValue = {
     brandlogos: {
       HeroImage,
@@ -207,6 +220,9 @@ export const StoreProvider = ({ children }) => {
     createacc,
     name,
     setName,
+    profileView,
+    setProfileView,
+    Logout,
   };
 
   return <Store.Provider value={contextValue}>{children}</Store.Provider>;

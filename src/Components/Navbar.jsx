@@ -5,9 +5,11 @@ import { FiShoppingCart } from "react-icons/fi";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link } from "react-router";
 import { Store } from "../store/Context";
+import UserProfile from "../userProfile/UserProfile";
 
 const Navbar = () => {
-  const { cart, searchQuery, handleSearchQuery } = useContext(Store);
+  const { cart, searchQuery, handleSearchQuery, profileView, setProfileView } =
+    useContext(Store);
   const cartlength = cart.length;
   return (
     <div className="flex items-center w-full h-20 px-4 py-3 bg-white ">
@@ -65,7 +67,17 @@ const Navbar = () => {
         />
       </div>
       <div className="flex flex-row-reverse justify-between gap-8 px-16 User-account-icons">
-        <FaRegCircleUser className="cursor-pointer size-6" />
+        <FaRegCircleUser
+          className="cursor-pointer size-6"
+          onClick={() => {
+            if (profileView === false) {
+              setProfileView(true);
+            } else {
+              setProfileView(false);
+            }
+          }}
+        />
+        <UserProfile />
         <Link to="/Cart" className="relative">
           <FiShoppingCart className="relative cursor-pointer size-6" />
           {cartlength > 0 && (

@@ -28,6 +28,23 @@ const App = () => {
       {discount ? <DiscountLabel /> : ""}
       <Routes>
         <Route
+          path="/createAccount"
+          element={
+            <PublicRoute>
+              <CreateAccount />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <LoginAccount />
+            </PublicRoute>
+          }
+        />
+
+        <Route
           path="/"
           element={
             <>
@@ -129,22 +146,6 @@ const App = () => {
                 <Footer />
               </ProtectedRoute>
             </>
-          }
-        />
-        <Route
-          path="/createAccount"
-          element={
-            <PublicRoute>
-              <CreateAccount />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/loginaccount"
-          element={
-            <PublicRoute>
-              <LoginAccount />
-            </PublicRoute>
           }
         />
       </Routes>
