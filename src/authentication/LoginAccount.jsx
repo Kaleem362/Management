@@ -96,10 +96,13 @@ const LoginAccount = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
+            <p className="mb-4 text-sm font-Manrope text-slate-100 text-end">
+              forgot Passowrd ?
+            </p>
             <p className="px-2 text-white bg-red-500 rounded font-Manrope error">
               {error && errorValue}
             </p>
-            <p className="text-white font-Manrope">
+            <p className="text-sm text-slate-100 font-Manrope">
               dont have an account?{" "}
               <Link to="/createAccount" className="underline text-slate-400">
                 Create Account

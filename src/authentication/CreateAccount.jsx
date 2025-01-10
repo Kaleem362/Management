@@ -4,11 +4,18 @@ import { Link } from "react-router";
 // import {toast} from React;
 
 const CreateAccount = () => {
-  const { email, setEmail, password, setPassword, createacc, name, setName } =
-    useContext(Store);
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    createacc,
+    name,
+    setName,
+    googleSignIn,
+  } = useContext(Store);
   return (
     <div className="items-center justify-center w-full h-screen bg-transparent backdrop-filter-blur">
-      {/* {toast.success("success")} */}
       <section className="flex items-center justify-center w-full h-full">
         <div className="flex items-center justify-center px-4 py-10 bg-white rounded-lg shadow-cardShadow sm:px-6 sm:py-16 lg:px-8 lg:py-8 w-fit">
           <div className="p-4 shadow-md xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
@@ -95,7 +102,10 @@ const CreateAccount = () => {
               </div>
             </form>
             <div className="mt-3 space-y-3">
-              <button className="flex justify-between w-full gap-4 px-10 py-2 font-bold border rounded button font-manrope hover:shadow-buttonShadow">
+              <button
+                className="flex justify-between w-full gap-4 px-10 py-2 font-bold border rounded button font-manrope hover:shadow-buttonShadow"
+                onClick={() => googleSignIn()}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   preserveAspectRatio="xMidYMid"

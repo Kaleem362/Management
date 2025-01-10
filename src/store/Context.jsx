@@ -15,7 +15,9 @@ import { auth, db } from "../Firebase/FirebaseConfig";
 // import { setDoc, doc, addDoc } from "firebase/firestore";
 import {
   createUserWithEmailAndPassword,
+  GoogleAuthProvider,
   onAuthStateChanged,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 import { useNavigate } from "react-router";
@@ -45,6 +47,7 @@ export const StoreProvider = ({ children }) => {
   const [password, setPassword] = useState("");
 
   const [name, setName] = useState("");
+  const googleProvider = new GoogleAuthProvider();
   const navigate = useNavigate();
   const [profileView, setProfileView] = useState(false);
   const getProducts = async () => {
@@ -136,9 +139,10 @@ export const StoreProvider = ({ children }) => {
       queryWords.some((word) => title.includes(word))
     );
   });
+
   // authentication functions started here...........
   // create account function
-
+  // user will be created with email and password
   const createacc = async (email, password, name) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -167,7 +171,17 @@ export const StoreProvider = ({ children }) => {
     setPassword("");
     setName("");
   };
-
+  // sign in with google account instantly
+  const googleSignIn = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      console.log("Logged in with google account successfully");
+      navigate("/");
+    } catch (error) {
+      console.log(error.code);
+    }
+  };
+  //log out function for user
   const Logout = async () => {
     try {
       await signOut(auth);
@@ -238,6 +252,7 @@ export const StoreProvider = ({ children }) => {
     profileView,
     setProfileView,
     Logout,
+    googleSignIn,
   };
 
   return <Store.Provider value={contextValue}>{children}</Store.Provider>;
