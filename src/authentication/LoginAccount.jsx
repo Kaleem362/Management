@@ -45,6 +45,8 @@ const LoginAccount = () => {
         setError(false);
       }, 4000);
     }
+    setEmail("");
+    setPassword("");
   };
 
   return (
