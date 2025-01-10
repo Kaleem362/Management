@@ -1,26 +1,21 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getDatabase } from "firebase/database";
-
-// import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCQuKLnONNOSVVRw1jyMhUgB1nnmBTSuJI",
-  authDomain: "ecommerce-kaleem.firebaseapp.com",
-  projectId: "ecommerce-kaleem",
-  storageBucket: "ecommerce-kaleem.firebasestorage.app",
-  messagingSenderId: "943278382223",
-  appId: "1:943278382223:web:34be49c8b27cd7e846e4fa",
-  measurementId: "G-4V8WHCJLWN",
+  apiKey: "AIzaSyAzWHHgSJmcPqDlDDLbovU4YQKmriukvHE",
+  authDomain: "ecommerce-kaleem-e0718.firebaseapp.com",
+  projectId: "ecommerce-kaleem-e0718",
+  storageBucket: "ecommerce-kaleem-e0718.firebasestorage.app",
+  messagingSenderId: "316646613978",
+  appId: "1:316646613978:web:e8943cfdd50ddaa58f96e3",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
-export const auth = getAuth();
-export const db = getDatabase(app);
+export const auth = getAuth(app);
+export const db = getFirestore(app);

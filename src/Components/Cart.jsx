@@ -11,11 +11,11 @@ const Cart = () => {
     <div className="flex items-center justify-between w-full gap-10 px-20">
       <div className="py-10 w-[70%]">
         <h1 className="text-4xl font-bold font-Manrope">Products Cart</h1>
-        <p className="text-slate-500">
+        <p className="my-2 text-slate-500">
           Explore Items to buy .....{" "}
           <Link
             to={"/WholeProducts"}
-            className="text-2xl font-extrabold underline transition-all duration-100 ease-in-out text-blue-950"
+            className="font-extrabold text-red-500 underline transition-all duration-100 ease-in-out text-1xl"
           >
             See Products
           </Link>

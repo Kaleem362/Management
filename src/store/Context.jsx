@@ -12,12 +12,14 @@ import WomensClothing from "../assets/images/WomensClothing.png";
 import { Customers } from "../Components/testimonialData";
 import Ck from "../brand-logos/calvinkleinbrandlogo.png";
 import { auth, db } from "../Firebase/FirebaseConfig";
+// import { setDoc, doc, addDoc } from "firebase/firestore";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
 import { useNavigate } from "react-router";
+import { doc, setDoc } from "firebase/firestore";
 
 export const Store = createContext();
 
@@ -137,7 +139,7 @@ export const StoreProvider = ({ children }) => {
   // authentication functions started here...........
   // create account function
 
-  const createacc = async (email, password) => {
+  const createacc = async (email, password, name) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -145,15 +147,9 @@ export const StoreProvider = ({ children }) => {
         password
       );
       console.log("Created user account successfully:", userCredential.user);
-      //navigate to home
+      await setUser(userCredential, name);
+      //navigate to home screen after the successful data of the user is set
       navigate("/");
-      //set the user in real time database
-      // Save user data in Realtime Database
-      const userRef = ref(db, `users/${userCredential.user.uid}`);
-      await setDoc(userRef, {
-        email: userCredential.user.email,
-        uid: userCredential.user.uid,
-      });
     } catch (error) {
       console.error("Error creating account:", error.code, error.message);
       // Optional: Provide user-friendly error messages
@@ -169,6 +165,7 @@ export const StoreProvider = ({ children }) => {
     }
     setEmail("");
     setPassword("");
+    setName("");
   };
 
   const Logout = async () => {
@@ -179,6 +176,24 @@ export const StoreProvider = ({ children }) => {
     } catch (error) {
       console.error("Logout error:", error);
       alert(error.message);
+    }
+  };
+
+  const setUser = async (userCredential, name) => {
+    try {
+      if (!userCredential?.user?.uid || !userCredential?.user?.email || !name) {
+        throw new Error("Missing required user data");
+      }
+      await setDoc(doc(db, "users", userCredential.user.uid), {
+        userid: userCredential.user.uid,
+        email: userCredential.user.email,
+        name: name,
+        createdAt: new Date().toISOString(),
+      });
+      console.log("user data stored successfully");
+    } catch (error) {
+      console.log("Error setting user:", error.code);
+      throw error;
     }
   };
   const contextValue = {

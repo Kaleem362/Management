@@ -48,7 +48,11 @@ const PublicRoute = ({ children }) => {
   }, [auth, navigate]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="m-10 text-3xl text-center font-Manrope text-slate-500">
+        Loading...
+      </div>
+    );
   }
 
   return children;
