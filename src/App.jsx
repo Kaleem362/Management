@@ -19,6 +19,7 @@ import JewelleryProducts from "./Components/JewelleryProducts";
 import CreateAccount from "./authentication/CreateAccount";
 import { ProtectedRoute, PublicRoute } from "./authentication/ProtectedRoute";
 import LoginAccount from "./authentication/LoginAccount";
+import ForgotPassword from "./authentication/ForgotPassword";
 
 const App = () => {
   const [discount, setDiscount] = useState(false);
@@ -43,6 +44,7 @@ const App = () => {
             </PublicRoute>
           }
         />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
 
         <Route
           path="/"

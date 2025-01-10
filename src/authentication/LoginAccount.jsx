@@ -97,7 +97,7 @@ const LoginAccount = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <p className="mb-4 text-sm font-Manrope text-slate-100 text-end">
-              forgot Passowrd ?
+              <Link to={"/forgot-password"}>forgot Passowrd ?</Link>
             </p>
             <p className="px-2 text-white bg-red-500 rounded font-Manrope error">
               {error && errorValue}
