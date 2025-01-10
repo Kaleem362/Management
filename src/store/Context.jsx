@@ -182,7 +182,6 @@ export const StoreProvider = ({ children }) => {
       console.log(error.code);
     }
   };
-  // password reset function for authorized users.
 
   //log out function for user
   const Logout = async () => {
