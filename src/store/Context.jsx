@@ -11,18 +11,15 @@ import party from "../assets/images/DressStyle-Party.jpg";
 import WomensClothing from "../assets/images/WomensClothing.png";
 import { Customers } from "../Components/testimonialData";
 import Ck from "../brand-logos/calvinkleinbrandlogo.png";
-import { auth, db } from "../Firebase/FirebaseConfig";
-// import { setDoc, doc, addDoc } from "firebase/firestore";
+import { auth } from "../Firebase/FirebaseConfig";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
-  sendPasswordResetEmail,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
 import { useNavigate } from "react-router";
-import { doc, setDoc } from "firebase/firestore";
 
 export const Store = createContext();
 
@@ -154,7 +151,7 @@ export const StoreProvider = ({ children }) => {
       console.log("Created user account successfully:", userCredential.user);
       await setUser(userCredential, name);
       //navigate to home screen after the successful data of the user is set
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       console.error("Error creating account:", error.code, error.message);
       // Optional: Provide user-friendly error messages
@@ -177,7 +174,7 @@ export const StoreProvider = ({ children }) => {
     try {
       await signInWithPopup(auth, googleProvider);
       console.log("Logged in with google account successfully");
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       console.log(error.code);
     }
@@ -188,30 +185,30 @@ export const StoreProvider = ({ children }) => {
     try {
       await signOut(auth);
       // Remove the alert as it might interrupt navigation
-      navigate("/login", { replace: true });
+      navigate("/", { replace: true });
     } catch (error) {
       console.error("Logout error:", error);
       alert(error.message);
     }
   };
 
-  const setUser = async (userCredential, name) => {
-    try {
-      if (!userCredential?.user?.uid || !userCredential?.user?.email || !name) {
-        throw new Error("Missing required user data");
-      }
-      await setDoc(doc(db, "users", userCredential.user.uid), {
-        userid: userCredential.user.uid,
-        email: userCredential.user.email,
-        name: name,
-        createdAt: new Date().toISOString(),
-      });
-      console.log("user data stored successfully");
-    } catch (error) {
-      console.log("Error setting user:", error.code);
-      throw error;
-    }
-  };
+  // const setUser = async (userCredential, name) => {
+  //   try {
+  //     if (!userCredential?.user?.uid || !userCredential?.user?.email || !name) {
+  //       throw new Error("Missing required user data");
+  //     }
+  //     await setDoc(doc(db, "users", userCredential.user.uid), {
+  //       userid: userCredential.user.uid,
+  //       email: userCredential.user.email,
+  //       name: name,
+  //       createdAt: new Date().toISOString(),
+  //     });
+  //     console.log("user data stored successfully");
+  //   } catch (error) {
+  //     console.log("Error setting user:", error.code);
+  //     throw error;
+  //   }
+  // };
   const contextValue = {
     brandlogos: {
       HeroImage,

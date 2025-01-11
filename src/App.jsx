@@ -37,7 +37,7 @@ const App = () => {
           }
         />
         <Route
-          path="/login"
+          path="/"
           element={
             <PublicRoute>
               <LoginAccount />
@@ -47,7 +47,7 @@ const App = () => {
         <Route path="/forgot-password" element={<ForgotPassword />} />
 
         <Route
-          path="/"
+          path="/home"
           element={
             <>
               <ProtectedRoute>

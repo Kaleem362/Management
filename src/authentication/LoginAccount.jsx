@@ -27,7 +27,7 @@ const LoginAccount = () => {
       const user = await signInWithEmailAndPassword(auth, email, password);
       console.table(user);
       console.log("login successful");
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       // Access the `code` property from the Firebase error object
       const errorCode = error.code;
@@ -57,7 +57,7 @@ const LoginAccount = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user; // Get user details if needed
       console.log("Logged in with Google:", user);
-      navigate("/"); // Redirect to home page or dashboard after successful login
+      navigate("/home"); // Redirect to home page or dashboard after successful login
     } catch (error) {
       console.error("Error signing in with Google:", error);
       setError(error.message); // Handle error and show message

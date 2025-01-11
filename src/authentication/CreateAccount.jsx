@@ -26,7 +26,7 @@ const CreateAccount = () => {
             <p className="mt-2 text-sm text-center text-gray-600">
               Already have an account?{" "}
               <Link
-                to={"/login"}
+                to={"/"}
                 className="font-bold text-[16px] text-black font-manrope hover:underline hover:cursor-pointer"
               >
                 Login
