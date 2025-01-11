@@ -76,7 +76,7 @@ const LoginAccount = () => {
           <br />
           <br />
           <br />
-          E-Commerce-by-Kaleem
+          ECOMMERCE BY KALEEM
         </marquee>
         <marquee
           behavior="scroll"
@@ -84,7 +84,7 @@ const LoginAccount = () => {
           speed="normal"
           className="font-extrabold text-9xl text-slate-700 font-Manrope"
         >
-          welcome to E-Commerce
+          WELCOME TO E'COMMERCE
         </marquee>
         <div className="absolute z-50 m-auto mt-18 w-96 rounded-2xl bg-slate-900 shadow-cardShadow">
           <div className="flex flex-col gap-2 p-8">
@@ -112,7 +112,7 @@ const LoginAccount = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <p className="mb-4 text-sm font-Manrope text-slate-100 text-end">
-              <Link to={"/forgot-password"}>forgot Passowrd ?</Link>
+              <Link to={"/forgot-password"}>forgot Passwprd ?</Link>
             </p>
             <p className="px-2 text-white bg-red-500 rounded font-Manrope error">
               {error && errorValue}
