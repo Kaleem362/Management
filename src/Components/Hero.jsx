@@ -33,7 +33,7 @@ const Hero = () => {
               className="text-section w-[50%] my-18 justify-center
              flex-col flex"
             >
-              <h1 className="text-8xl leading-[70px] font-[900] text-black uppercase break-words font-Manrope pt-12 tracking-tighter">
+              <h1 className="text-[90px] leading-[70px] font-[900] text-black uppercase break-words font-Manrope pt-12 tracking-tighter">
                 Find Favorite items for your life style
               </h1>
               <p className="p-4 leading-tight text-justify font-Manrope text-slate-500">
