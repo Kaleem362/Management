@@ -12,8 +12,8 @@ const Navbar = () => {
     useContext(Store);
   const cartlength = cart.length;
   return (
-    <div className="flex items-center w-full h-20 px-4 py-3 bg-white ">
-      <Link to={"/"}>
+    <div className="flex items-center justify-between w-full h-20 px-4 py-3 bg-white ">
+      <Link to={"/home"}>
         <h1 className="h-full mr-3 text-3xl font-extrabold text-black font-manrope">
           SHOP.CO
         </h1>
@@ -68,7 +68,7 @@ const Navbar = () => {
       </div>
       <div className="flex flex-row-reverse justify-between gap-8 px-16 User-account-icons">
         <FaRegCircleUser
-          className="cursor-pointer size-6"
+          className="cursor-pointer size-8"
           onClick={() => {
             if (profileView === false) {
               setProfileView(true);
@@ -79,7 +79,7 @@ const Navbar = () => {
         />
         <UserProfile />
         <Link to="/Cart" className="relative">
-          <FiShoppingCart className="relative cursor-pointer size-6" />
+          <FiShoppingCart className="relative cursor-pointer size-8" />
           {cartlength > 0 && (
             <span
               className="absolute flex items-center justify-center w-5 h-5 text-sm font-bold text-white bg-red-600 rounded-full -right-3 -top-2"

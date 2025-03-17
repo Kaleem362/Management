@@ -55,8 +55,10 @@ const LoginAccount = () => {
     try {
       // Use signInWithPopup to login with existing Google account
       const result = await signInWithPopup(auth, provider);
+      console.log(result);
       const user = result.user; // Get user details if needed
       console.log("Logged in with Google:", user);
+
       navigate("/home"); // Redirect to home page or dashboard after successful login
     } catch (error) {
       console.error("Error signing in with Google:", error);

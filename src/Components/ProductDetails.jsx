@@ -1,5 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router";
+import Cart from "../Components/Cart";
 import { Store } from "../store/Context";
 import {
   AiFillHeart,
@@ -11,8 +12,16 @@ import Loader from "./Loader";
 
 const ProductDetails = () => {
   const { id } = useParams(); // Get product ID from URL
-  const { addToCart, products, addFav, addFavourite, remFav, setAddFavourite } =
-    useContext(Store);
+  const {
+    addToCart,
+    products,
+    addFav,
+    addFavourite,
+    remFav,
+    setAddFavourite,
+    cartLength,
+    setCartLength,
+  } = useContext(Store);
 
   // Find the selected product
   const product = products.find((p) => p.id === parseInt(id));
@@ -94,33 +103,37 @@ const ProductDetails = () => {
       </div>
 
       {/* Sidebar Section */}
-      <div className="ProductDetailsSidebar bg-white ml-4 w-[30%]">
-        <div className="p-4 header-categories">
-          <h4 className="mb-2 text-2xl font-bold text-start font-Manrope">
-            Suggested More Products
-          </h4>
-          {products.slice(0, 10).map((product) => (
-            <div
-              key={product.id}
-              className="flex items-center justify-between w-full p-2 mb-2 rounded-lg hover:bg-gray-100 bg-slate-300"
-            >
-              <img
-                src={product.image}
-                alt={product.title}
-                className="object-contain w-16 h-16 border rounded-lg"
-              />
-              <div className="flex flex-col flex-grow ml-4">
-                <h2 className="text-sm font-bold text-gray-800 truncate">
-                  {product.title.slice(0, 30)}
-                </h2>
-                <p className="text-sm font-semibold text-gray-500">
-                  ${product.price.toFixed(2)}
-                </p>
+      {cartLength === 0 ? (
+        <div className="ProductDetailsSidebar bg-white ml-4 w-[30%]">
+          <div className="p-4 header-categories">
+            <h4 className="mb-2 text-2xl font-bold text-start font-Manrope">
+              Suggested More Products
+            </h4>
+            {products.slice(0, 10).map((product) => (
+              <div
+                key={product.id}
+                className="flex items-center justify-between w-full p-2 mb-2 rounded-lg hover:bg-gray-100 bg-slate-300"
+              >
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="object-contain w-16 h-16 border rounded-lg"
+                />
+                <div className="flex flex-col flex-grow ml-4">
+                  <h2 className="text-sm font-bold text-gray-800 truncate">
+                    {product.title.slice(0, 30)}
+                  </h2>
+                  <p className="text-sm font-semibold text-gray-500">
+                    ${product.price.toFixed(2)}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <Cart />
+      )}
     </div>
   );
 };

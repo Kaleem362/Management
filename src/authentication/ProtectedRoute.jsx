@@ -23,7 +23,7 @@ const ProtectedRoute = ({ children }) => {
   }, [auth, navigate]);
 
   if (loading) {
-    return <BlackLoader />; // You can replace this with a loading spinner
+    return <BlackLoader />; // showing the loading spinner
   }
 
   return children;

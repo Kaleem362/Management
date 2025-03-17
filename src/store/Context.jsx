@@ -45,6 +45,7 @@ export const StoreProvider = ({ children }) => {
   const [password, setPassword] = useState("");
 
   const [name, setName] = useState("");
+  // const [user, setUser] = usestate("");
   const googleProvider = new GoogleAuthProvider();
   const navigate = useNavigate();
   const [profileView, setProfileView] = useState(false);
@@ -141,7 +142,7 @@ export const StoreProvider = ({ children }) => {
   // authentication functions started here...........
   // create account function
   // user will be created with email and password
-  const createacc = async (email, password, name) => {
+  const createacc = async (email, password) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -149,7 +150,7 @@ export const StoreProvider = ({ children }) => {
         password
       );
       console.log("Created user account successfully:", userCredential.user);
-      await setUser(userCredential, name);
+      // await setUser(userCredential, name);
       //navigate to home screen after the successful data of the user is set
       navigate("/home");
     } catch (error) {
@@ -192,23 +193,6 @@ export const StoreProvider = ({ children }) => {
     }
   };
 
-  // const setUser = async (userCredential, name) => {
-  //   try {
-  //     if (!userCredential?.user?.uid || !userCredential?.user?.email || !name) {
-  //       throw new Error("Missing required user data");
-  //     }
-  //     await setDoc(doc(db, "users", userCredential.user.uid), {
-  //       userid: userCredential.user.uid,
-  //       email: userCredential.user.email,
-  //       name: name,
-  //       createdAt: new Date().toISOString(),
-  //     });
-  //     console.log("user data stored successfully");
-  //   } catch (error) {
-  //     console.log("Error setting user:", error.code);
-  //     throw error;
-  //   }
-  // };
   const contextValue = {
     brandlogos: {
       HeroImage,

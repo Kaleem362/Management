@@ -26,7 +26,7 @@ const App = () => {
 
   return (
     <div>
-      {discount ? <DiscountLabel /> : ""}
+      {discount && <DiscountLabel />}
       <Routes>
         <Route
           path="/createAccount"
