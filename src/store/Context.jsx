@@ -175,6 +175,7 @@ export const StoreProvider = ({ children }) => {
     try {
       await signInWithPopup(auth, googleProvider);
       console.log("Logged in with google account successfully");
+      setCurrentUser(true);
       navigate("/home");
     } catch (error) {
       console.log(error.code);

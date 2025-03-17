@@ -39,7 +39,7 @@ const PublicRoute = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is authenticated, redirect to home
-        navigate("/");
+        navigate("/home");
       }
       setLoading(false);
     });
